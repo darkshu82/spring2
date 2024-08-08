@@ -30,7 +30,7 @@
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
-					<form:form action="${root }board/read" modelAttribute="modifyContentDTO" method="get">
+					<form:form action="${root }board/modifyprocedure" modelAttribute="modifyContentDTO" method="post">
                         <form:hidden path="content_idx"/>
                         <form:hidden path="content_board_idx"/>
 						<div class="form-group">

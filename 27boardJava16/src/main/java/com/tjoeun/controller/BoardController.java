@@ -74,8 +74,29 @@ public class BoardController {
 		model.addAttribute("board_info_idx", board_info_idx);
 		model.addAttribute("content_idx", content_idx);
 		
+		ContentDTO tmpContentDTO = boardService.getContent(content_idx);
+		modifyContentDTO.setContent_writer_name(tmpContentDTO.getContent_writer_name());
+		modifyContentDTO.setContent_date(tmpContentDTO.getContent_date());
+		modifyContentDTO.setContent_subject(tmpContentDTO.getContent_subject());
+		modifyContentDTO.setContent_text(tmpContentDTO.getContent_text());
+		modifyContentDTO.setContent_file(tmpContentDTO.getContent_file());
+		modifyContentDTO.setContent_writer_idx(tmpContentDTO.getContent_writer_idx());
+		
 		return "board/modify";
 	}
+	
+	@PostMapping("/modifyprocedure")
+	public String modify_procedure(@Valid @ModelAttribute("modifyContentDTO") ContentDTO modifyContentDTO, BindingResult result) {
+		if(result.hasErrors()) {
+			return "board/modify";	
+		}
+		
+		boardService.addContent(modifyContentDTO);
+		System.out.println("modifyContentDTO (controller) : " + modifyContentDTO);
+		
+		return "board/modify_success";
+	}
+	
 
 	@GetMapping("/delete")
 	public String delete(@RequestParam("board_info_idx") int board_info_idx, 
