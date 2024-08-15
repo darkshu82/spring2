@@ -1,0 +1,35 @@
+ MVC Pattern
+ 
+ Model : 데이터 관리
+ View  : 화면 구성
+ Controller : request 에 따른 code 흐름 제어
+  
+ client                 server
+request  -->   Controller  ↔   Service  ↔  DAO       ↔    Database
+                                           Data Access Object
+                                                  
+
+Bean
+   
+   @Bean : 메소드에서 반환하는 객체를 Bean 으로 등록함
+   @Component : 클래스의 객체를 생성해서 Bean 으로 등록함
+   @Controller : url pattern 에 의해서 자동으로 호출되는
+                 메소드를 작성한 클래스를  Bean 으로 등록함
+                   ㄴ view 의 이름을 반환함
+                   
+   @RestController :   url pattern 에 의해서 자동으로 호출되는
+   (Restful API sever) 메소드를 작성한 클래스를  Bean 으로 등록함
+                        ㄴ data 를 반환함
+   
+   @ControllerAdvice : 예외 발생시 사용하는 Global Exception Handler 로
+                       사용하는 클래스를 Bean 으로 등록함
+                       
+   @Service : Controller 에서 호출하는 메소드가 작성된 클래스를 Bean 으로 등록함
+             
+   @Repository : @Service 로 정의한 Bean 에서 
+                 호출하는 메소드가 작성된 클래스를 Bean 으로 등록함
+                 Database 와 직접적으로 관련된 처리를 구현함
+   
+   
+   
+   
